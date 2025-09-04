@@ -120,8 +120,9 @@
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
   --font-instrument-serif: var(--font-instrument-serif);
-  /* Added Figtree font to theme configuration */
+  /* Configure font variables for Tailwind */
   --font-sans: var(--font-figtree);
+  --font-mono: var(--font-geist-mono);
   --font-figtree: var(--font-figtree);
 }
 

@@ -41,17 +41,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <style>{`
-html {
-  font-family: ${figtree.style.fontFamily};
-  --font-sans: ${figtree.variable};
-  --font-mono: ${GeistMono.variable};
-  --font-instrument-serif: ${instrumentSerif.variable};
-}
-        `}</style>
-      </head>
-      <body className={`${figtree.variable} ${instrumentSerif.variable}`}>{children}</body>
+      <body className={`${figtree.variable} ${GeistMono.variable} ${instrumentSerif.variable} font-sans`}>{children}</body>
     </html>
   )
 }
