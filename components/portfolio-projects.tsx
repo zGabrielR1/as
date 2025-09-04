@@ -26,7 +26,7 @@ export default function PortfolioProjects() {
   ]
 
   return (
-    <section id="projects" className="relative z-20 px-8 py-16">
+    <section id="projects" className="relative z-10 px-8 py-16">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="mb-12">

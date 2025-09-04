@@ -29,7 +29,7 @@ export default function AboutSkills() {
   ]
 
   return (
-    <section id="about" className="relative z-20 px-8 py-16">
+    <section id="about" className="relative z-10 px-8 py-16">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="mb-12">
