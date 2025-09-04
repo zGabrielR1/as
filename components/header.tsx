@@ -15,7 +15,7 @@ export default function Header() {
   }
 
   return (
-    <header className="relative z-20 flex items-center justify-between p-6">
+    <header className="relative z-20 flex items-center justify-between p-6 absolute top-0 left-0 right-0">
       {/* Logo */}
       <div className="flex items-center">
         <div className="text-white font-bold text-xl tracking-tight">

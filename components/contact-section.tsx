@@ -55,7 +55,7 @@ export default function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="relative z-10 px-8 py-16 mb-8">
+    <section id="contact" className="relative z-10 px-8 py-16 mb-16 mt-16">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="mb-12 text-center">

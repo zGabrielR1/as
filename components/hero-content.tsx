@@ -22,8 +22,8 @@ export default function HeroContent() {
   }
 
   return (
-    <main className="absolute bottom-8 left-8 z-20 max-w-lg">
-      <div className="text-left">
+    <main className="relative z-10 min-h-screen flex items-end pb-16 pl-8 pr-8 pt-20">
+      <div className="text-left max-w-lg">
         <div
           className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm mb-4 relative"
           style={{
