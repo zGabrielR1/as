@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
+
 export default function PortfolioProjects() {
   const projects = [
     {
@@ -31,20 +33,17 @@ export default function PortfolioProjects() {
         {/* Section Header */}
         <div className="mb-12">
           <div
-            className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm mb-4 relative"
-            style={{
-              filter: "url(#glass-effect)",
-            }}
+            className="inline-flex items-center px-3 py-1 rounded-full glassy mb-4 relative"
           >
-            <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full" />
-            <span className="text-white/90 text-xs font-light relative z-10">Featured Work</span>
+            <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-border to-transparent rounded-full" />
+            <span className="text-muted-foreground text-xs font-light relative z-10">Featured Work</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-light text-white mb-4">
+          <h2 className="text-4xl md:text-5xl font-light text-foreground mb-4">
             <span className="font-medium italic instrument">Selected</span> Projects
           </h2>
 
-          <p className="text-sm font-light text-white/70 max-w-2xl">
+          <p className="text-sm font-light text-muted-foreground max-w-2xl">
             A showcase of recent projects demonstrating expertise in modern web development, from concept to deployment.
           </p>
         </div>
@@ -54,51 +53,55 @@ export default function PortfolioProjects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10 hover:border-white/20 transition-all duration-300 hover:bg-white/10"
-              style={{
-                filter: "url(#glass-effect)",
-              }}
+              className="group relative glassy rounded-2xl p-6"
             >
               {/* Status Badge */}
               <div className="flex items-center justify-between mb-4">
                 <span
                   className={`px-2 py-1 rounded-full text-xs font-light ${
                     project.status === "Live"
-                      ? "bg-green-500/20 text-green-300 border border-green-500/30"
-                      : "bg-amber-500/20 text-amber-300 border border-amber-500/30"
+                      ? "bg-destructive text-destructive-foreground border border-destructive"
+                      : "bg-muted text-muted-foreground border border-muted"
                   }`}
                 >
                   {project.status}
                 </span>
 
-                <a
-                  href={project.link}
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white/60 hover:text-white"
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  asChild
+                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 h-6 w-6 p-0"
                 >
-                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                    />
-                  </svg>
-                </a>
+                  <a
+                    href={project.link}
+                    className="text-muted-foreground hover:text-foreground"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
+                  </a>
+                </Button>
               </div>
 
               {/* Project Info */}
-              <h3 className="text-xl font-medium text-white mb-2 group-hover:text-white/90 transition-colors">
+              <h3 className="text-xl font-medium text-foreground mb-2 group-hover:text-accent-foreground transition-colors">
                 {project.title}
               </h3>
 
-              <p className="text-sm font-light text-white/70 mb-4 leading-relaxed">{project.description}</p>
+              <p className="text-sm font-light text-muted-foreground mb-4 leading-relaxed">{project.description}</p>
 
               {/* Tech Stack */}
               <div className="flex flex-wrap gap-2">
                 {project.tech.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-2 py-1 rounded-full bg-white/10 text-white/80 text-xs font-light border border-white/20"
+                    className="px-2 py-1 rounded-full bg-muted text-muted-foreground text-xs font-light border border-border"
                   >
                     {tech}
                   </span>
@@ -110,9 +113,9 @@ export default function PortfolioProjects() {
 
         {/* View All Projects Button */}
         <div className="flex justify-center mt-12">
-          <button className="px-8 py-3 rounded-full bg-transparent border border-white/30 text-white font-normal text-sm transition-all duration-200 hover:bg-white/10 hover:border-white/50 cursor-pointer">
+          <Button variant="glassy" size="lg" className="px-8">
             View All Projects
-          </button>
+          </Button>
         </div>
       </div>
     </section>

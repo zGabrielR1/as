@@ -3,6 +3,7 @@
 import type React from "react"
 
 import { useState } from "react"
+import { Button } from "@/components/ui/button"
 
 export default function ContactSection() {
   const [formData, setFormData] = useState({
@@ -60,20 +61,17 @@ export default function ContactSection() {
         {/* Section Header */}
         <div className="mb-12 text-center">
           <div
-            className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm mb-4 relative"
-            style={{
-              filter: "url(#glass-effect)",
-            }}
+            className="inline-flex items-center px-3 py-1 rounded-full glassy mb-4 relative"
           >
-            <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full" />
-            <span className="text-white/90 text-xs font-light relative z-10">Get In Touch</span>
+            <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-border to-transparent rounded-full" />
+            <span className="text-muted-foreground text-xs font-light relative z-10">Get In Touch</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
             <span className="font-medium italic instrument">Let's</span> Work Together
           </h2>
 
-          <p className="text-sm font-light text-white/70 max-w-2xl mx-auto">
+          <p className="text-sm font-light text-muted-foreground max-w-2xl mx-auto">
             Have a project in mind or want to discuss opportunities? I'd love to hear from you. Let's create something
             amazing together.
           </p>
@@ -82,16 +80,13 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div
-            className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
-            style={{
-              filter: "url(#glass-effect)",
-            }}
+            className="glassy rounded-2xl p-8"
           >
-            <h3 className="text-xl font-medium text-white mb-6">Send a Message</h3>
+            <h3 className="text-xl font-medium text-foreground mb-6">Send a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-sm font-light text-white/80 mb-2">
+                <label htmlFor="name" className="block text-sm font-light text-muted-foreground mb-2">
                   Name
                 </label>
                 <input
@@ -101,13 +96,13 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200"
                   placeholder="Your name"
                 />
               </div>
 
               <div>
-                <label htmlFor="email" className="block text-sm font-light text-white/80 mb-2">
+                <label htmlFor="email" className="block text-sm font-light text-muted-foreground mb-2">
                   Email
                 </label>
                 <input
@@ -117,13 +112,13 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200"
                   placeholder="your.email@example.com"
                 />
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-light text-white/80 mb-2">
+                <label htmlFor="message" className="block text-sm font-light text-muted-foreground mb-2">
                   Message
                 </label>
                 <textarea
@@ -133,17 +128,14 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg bg-white/10 border border-white/20 text-white placeholder-white/50 focus:outline-none focus:ring-2 focus:ring-white/30 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200 resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
 
-              <button
-                type="submit"
-                className="w-full px-8 py-3 rounded-full bg-white text-black font-normal text-sm transition-all duration-200 hover:bg-white/90 cursor-pointer"
-              >
+              <Button type="submit" variant="glassy" size="lg" className="w-full">
                 Send Message
-              </button>
+              </Button>
             </form>
           </div>
 
@@ -151,17 +143,14 @@ export default function ContactSection() {
           <div className="space-y-6">
             {/* Contact Info */}
             <div
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
-              style={{
-                filter: "url(#glass-effect)",
-              }}
+              className="glassy rounded-2xl p-8"
             >
-              <h3 className="text-xl font-medium text-white mb-6">Contact Information</h3>
+              <h3 className="text-xl font-medium text-foreground mb-6">Contact Information</h3>
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                    <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -171,14 +160,14 @@ export default function ContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white/60 text-xs">Email</p>
-                    <p className="text-white text-sm">gabriel@renostro.dev</p>
+                    <p className="text-muted-foreground text-xs">Email</p>
+                    <p className="text-foreground text-sm">gabriel@renostro.dev</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                    <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -194,14 +183,14 @@ export default function ContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white/60 text-xs">Location</p>
-                    <p className="text-white text-sm">San Francisco, CA</p>
+                    <p className="text-muted-foreground text-xs">Location</p>
+                    <p className="text-foreground text-sm">San Francisco, CA</p>
                   </div>
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                    <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                    <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -211,8 +200,8 @@ export default function ContactSection() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-white/60 text-xs">Response Time</p>
-                    <p className="text-white text-sm">Within 24 hours</p>
+                    <p className="text-muted-foreground text-xs">Response Time</p>
+                    <p className="text-foreground text-sm">Within 24 hours</p>
                   </div>
                 </div>
               </div>
@@ -220,28 +209,32 @@ export default function ContactSection() {
 
             {/* Social Links */}
             <div
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 border border-white/10"
-              style={{
-                filter: "url(#glass-effect)",
-              }}
+              className="glassy rounded-2xl p-8"
             >
-              <h3 className="text-xl font-medium text-white mb-6">Connect With Me</h3>
+              <h3 className="text-xl font-medium text-foreground mb-6">Connect With Me</h3>
 
               <div className="flex space-x-4">
                 {socialLinks.map((social, index) => (
-                  <a
+                  <Button
                     key={index}
-                    href={social.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-12 h-12 rounded-full bg-white/10 border border-white/20 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 hover:border-white/30 transition-all duration-200"
+                    variant="ghost"
+                    size="icon"
+                    asChild
+                    className="w-12 h-12 p-0"
                   >
-                    {social.icon}
-                  </a>
+                    <a
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-muted-foreground hover:text-foreground"
+                    >
+                      {social.icon}
+                    </a>
+                  </Button>
                 ))}
               </div>
 
-              <p className="text-xs text-white/60 mt-4">
+              <p className="text-xs text-muted-foreground mt-4">
                 Follow me for updates on my latest projects and insights into web development.
               </p>
             </div>

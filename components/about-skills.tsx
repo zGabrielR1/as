@@ -1,5 +1,7 @@
 "use client"
 
+import { Button } from "@/components/ui/button"
+
 export default function AboutSkills() {
   const skills = {
     Frontend: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Vue.js", "HTML5/CSS3"],
@@ -34,16 +36,13 @@ export default function AboutSkills() {
         {/* Section Header */}
         <div className="mb-12">
           <div
-            className="inline-flex items-center px-3 py-1 rounded-full bg-white/5 backdrop-blur-sm mb-4 relative"
-            style={{
-              filter: "url(#glass-effect)",
-            }}
+            className="inline-flex items-center px-3 py-1 rounded-full glassy mb-4 relative"
           >
-            <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent rounded-full" />
-            <span className="text-white/90 text-xs font-light relative z-10">About Me</span>
+            <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-border to-transparent rounded-full" />
+            <span className="text-muted-foreground text-xs font-light relative z-10">About Me</span>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-light text-white mb-6">
+          <h2 className="text-4xl md:text-5xl font-light text-foreground mb-6">
             <span className="font-medium italic instrument">Passionate</span> Developer
           </h2>
         </div>
@@ -52,13 +51,10 @@ export default function AboutSkills() {
           {/* About Content */}
           <div className="space-y-6">
             <div
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10"
-              style={{
-                filter: "url(#glass-effect)",
-              }}
+              className="glassy rounded-2xl p-6"
             >
-              <h3 className="text-xl font-medium text-white mb-4">My Story</h3>
-              <div className="space-y-4 text-sm font-light text-white/70 leading-relaxed">
+              <h3 className="text-xl font-medium text-foreground mb-4">My Story</h3>
+              <div className="space-y-4 text-sm font-light text-muted-foreground leading-relaxed">
                 <p>
                   With over 5 years of experience in web development, I specialize in creating exceptional digital
                   experiences that combine beautiful design with robust functionality. My journey began with a curiosity
@@ -75,22 +71,19 @@ export default function AboutSkills() {
 
             {/* Experience Timeline */}
             <div
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10"
-              style={{
-                filter: "url(#glass-effect)",
-              }}
+              className="glassy rounded-2xl p-6"
             >
-              <h3 className="text-xl font-medium text-white mb-6">Experience</h3>
+              <h3 className="text-xl font-medium text-foreground mb-6">Experience</h3>
               <div className="space-y-6">
                 {experience.map((exp, index) => (
-                  <div key={index} className="relative pl-6 border-l border-white/20">
-                    <div className="absolute -left-1.5 top-0 w-3 h-3 bg-white rounded-full"></div>
+                  <div key={index} className="relative pl-6 border-l border-border">
+                    <div className="absolute -left-1.5 top-0 w-3 h-3 bg-foreground rounded-full"></div>
                     <div className="space-y-1">
-                      <h4 className="text-white font-medium text-sm">{exp.role}</h4>
-                      <p className="text-white/60 text-xs">
+                      <h4 className="text-foreground font-medium text-sm">{exp.role}</h4>
+                      <p className="text-muted-foreground text-xs">
                         {exp.company} • {exp.period}
                       </p>
-                      <p className="text-white/70 text-xs leading-relaxed">{exp.description}</p>
+                      <p className="text-muted-foreground text-xs leading-relaxed">{exp.description}</p>
                     </div>
                   </div>
                 ))}
@@ -101,21 +94,18 @@ export default function AboutSkills() {
           {/* Skills Section */}
           <div className="space-y-6">
             <div
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10"
-              style={{
-                filter: "url(#glass-effect)",
-              }}
+              className="glassy rounded-2xl p-6"
             >
-              <h3 className="text-xl font-medium text-white mb-6">Technical Skills</h3>
+              <h3 className="text-xl font-medium text-foreground mb-6">Technical Skills</h3>
               <div className="space-y-6">
                 {Object.entries(skills).map(([category, skillList]) => (
                   <div key={category}>
-                    <h4 className="text-white/90 font-medium text-sm mb-3">{category}</h4>
+                    <h4 className="text-foreground font-medium text-sm mb-3">{category}</h4>
                     <div className="flex flex-wrap gap-2">
                       {skillList.map((skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1.5 rounded-full bg-white/10 text-white/80 text-xs font-light border border-white/20 hover:bg-white/20 transition-colors duration-200"
+                          className="px-3 py-1.5 rounded-full bg-muted text-muted-foreground text-xs font-light border border-border hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
                         >
                           {skill}
                         </span>
@@ -128,28 +118,25 @@ export default function AboutSkills() {
 
             {/* Stats */}
             <div
-              className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 border border-white/10"
-              style={{
-                filter: "url(#glass-effect)",
-              }}
+              className="glassy rounded-2xl p-6"
             >
-              <h3 className="text-xl font-medium text-white mb-6">By the Numbers</h3>
+              <h3 className="text-xl font-medium text-foreground mb-6">By the Numbers</h3>
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white mb-1">50+</div>
-                  <div className="text-xs text-white/70">Projects Completed</div>
+                  <div className="text-2xl font-bold text-foreground mb-1">50+</div>
+                  <div className="text-xs text-muted-foreground">Projects Completed</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white mb-1">5+</div>
-                  <div className="text-xs text-white/70">Years Experience</div>
+                  <div className="text-2xl font-bold text-foreground mb-1">5+</div>
+                  <div className="text-xs text-muted-foreground">Years Experience</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white mb-1">15+</div>
-                  <div className="text-xs text-white/70">Technologies</div>
+                  <div className="text-2xl font-bold text-foreground mb-1">15+</div>
+                  <div className="text-xs text-muted-foreground">Technologies</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold text-white mb-1">100%</div>
-                  <div className="text-xs text-white/70">Client Satisfaction</div>
+                  <div className="text-2xl font-bold text-foreground mb-1">100%</div>
+                  <div className="text-xs text-muted-foreground">Client Satisfaction</div>
                 </div>
               </div>
             </div>
