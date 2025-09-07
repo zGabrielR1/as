@@ -61,7 +61,7 @@ export default function ContactSection() {
         {/* Section Header */}
         <div className="mb-12 text-center">
           <div
-            className="inline-flex items-center px-3 py-1 rounded-full glassy mb-4 relative"
+            className="inline-flex items-center px-3 py-1 rounded-full glassy shader-clock mb-4 relative"
           >
             <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-border to-transparent rounded-full" />
             <span className="text-muted-foreground text-xs font-light relative z-10">Get In Touch</span>
@@ -80,7 +80,7 @@ export default function ContactSection() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <div
-            className="glassy rounded-2xl p-8"
+            className="glassy rounded-2xl p-8 shader-clock bg-card text-card-foreground"
           >
             <h3 className="text-xl font-medium text-foreground mb-6">Send a Message</h3>
 
@@ -96,7 +96,7 @@ export default function ContactSection() {
                   value={formData.name}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg glassy shader-clock border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200"
                   placeholder="Your name"
                 />
               </div>
@@ -112,7 +112,7 @@ export default function ContactSection() {
                   value={formData.email}
                   onChange={handleChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 rounded-lg glassy shader-clock border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200"
                   placeholder="your.email@example.com"
                 />
               </div>
@@ -128,12 +128,12 @@ export default function ContactSection() {
                   onChange={handleChange}
                   required
                   rows={5}
-                  className="w-full px-4 py-3 rounded-lg bg-muted border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200 resize-none"
+                  className="w-full px-4 py-3 rounded-lg glassy shader-clock border border-border text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring/30 focus:border-transparent transition-all duration-200 resize-none"
                   placeholder="Tell me about your project..."
                 />
               </div>
 
-              <Button type="submit" variant="glassy" size="lg" className="w-full">
+              <Button type="submit" variant="glassy" size="lg" className="w-full shader-clock">
                 Send Message
               </Button>
             </form>
@@ -143,13 +143,13 @@ export default function ContactSection() {
           <div className="space-y-6">
             {/* Contact Info */}
             <div
-              className="glassy rounded-2xl p-8"
+              className="glassy rounded-2xl p-8 shader-clock"
             >
               <h3 className="text-xl font-medium text-foreground mb-6">Contact Information</h3>
 
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full glassy shader-clock flex items-center justify-center">
                     <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
@@ -166,7 +166,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full glassy shader-clock flex items-center justify-center">
                     <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
@@ -189,7 +189,7 @@ export default function ContactSection() {
                 </div>
 
                 <div className="flex items-center space-x-3">
-                  <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-full glassy shader-clock flex items-center justify-center">
                     <svg className="w-5 h-5 text-foreground" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path
                         strokeLinecap="round"
@@ -209,7 +209,7 @@ export default function ContactSection() {
 
             {/* Social Links */}
             <div
-              className="glassy rounded-2xl p-8"
+              className="glassy rounded-2xl p-8 shader-clock"
             >
               <h3 className="text-xl font-medium text-foreground mb-6">Connect With Me</h3>
 
@@ -220,7 +220,7 @@ export default function ContactSection() {
                     variant="ghost"
                     size="icon"
                     asChild
-                    className="w-12 h-12 p-0"
+                    className="w-12 h-12 p-0 glassy shader-clock"
                   >
                     <a
                       href={social.url}

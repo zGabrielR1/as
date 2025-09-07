@@ -53,15 +53,15 @@ export default function PortfolioProjects() {
           {projects.map((project, index) => (
             <div
               key={index}
-              className="group relative glassy rounded-2xl p-6"
+              className="group relative glassy shader-clock rounded-2xl p-6"
             >
               {/* Status Badge */}
               <div className="flex items-center justify-between mb-4">
                 <span
-                  className={`px-2 py-1 rounded-full text-xs font-light ${
+                  className={`px-2 py-1 rounded-full text-xs font-light glassy shader-clock ${
                     project.status === "Live"
-                      ? "bg-destructive text-destructive-foreground border border-destructive"
-                      : "bg-muted text-muted-foreground border border-muted"
+                      ? "bg-black/40 text-white border border-destructive"
+                      : "bg-muted/50 text-muted-foreground border border-muted"
                   }`}
                 >
                   {project.status}
@@ -71,7 +71,7 @@ export default function PortfolioProjects() {
                   variant="ghost"
                   size="icon"
                   asChild
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 h-6 w-6 p-0"
+                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 h-6 w-6 p-0 glassy shader-clock"
                 >
                   <a
                     href={project.link}
@@ -101,7 +101,7 @@ export default function PortfolioProjects() {
                 {project.tech.map((tech, techIndex) => (
                   <span
                     key={techIndex}
-                    className="px-2 py-1 rounded-full bg-muted text-muted-foreground text-xs font-light border border-border"
+                    className="px-2 py-1 rounded-full bg-muted/50 text-muted-foreground text-xs font-light border border-border shader-clock hover:bg-primary/10 transition-colors"
                   >
                     {tech}
                   </span>
@@ -113,7 +113,7 @@ export default function PortfolioProjects() {
 
         {/* View All Projects Button */}
         <div className="flex justify-center mt-12">
-          <Button variant="glassy" size="lg" className="px-8">
+          <Button variant="glassy" size="lg" className="px-8 shader-clock">
             View All Projects
           </Button>
         </div>

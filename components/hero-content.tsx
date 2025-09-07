@@ -64,7 +64,7 @@ function ButtonGlobal({ onClick }: { onClick: () => void }) {
 
   return (
     <div
-      className="absolute backdrop-blur-md bg-card border border-border shadow-xl shadow-muted box-border content-stretch flex flex-row gap-0.5 items-center justify-center left-1/2 px-[22px] py-3 rounded-[38px] translate-x-[-50%] translate-y-[-50%] transition-all duration-300 hover:bg-accent hover:border-accent-foreground hover:shadow-2xl hover:shadow-accent-foreground hover:scale-105 active:scale-95 group overflow-visible z-20 will-change-transform cursor-pointer"
+      className="absolute glassy shader-clock backdrop-blur-md bg-card border border-border shadow-xl shadow-muted box-border content-stretch flex flex-row gap-0.5 items-center justify-center left-1/2 px-[22px] py-3 rounded-[38px] translate-x-[-50%] translate-y-[-50%] transition-all duration-300 hover:bg-accent hover:border-accent-foreground hover:shadow-2xl hover:shadow-accent-foreground hover:scale-105 active:scale-95 group overflow-visible z-20 will-change-transform cursor-pointer"
       data-name="Contact Me Button"
       style={{ top: "calc(50% - 0.5px)" }}
       onMouseEnter={() => setIsHovered(true)}
@@ -196,22 +196,22 @@ export default function HeroContent() {
   }
 
   return (
-    <main className="relative z-10 min-h-screen flex items-end pb-16 pl-8 pr-8 pt-20 bg-background">
+    <main className="relative z-10 min-h-screen flex items-end pb-16 pl-8 pr-8 pt-20 glassy shader-clock bg-transparent">
       <div className="text-left max-w-lg">
         <div
-          className="inline-flex items-center px-3 py-1 rounded-full bg-muted/50 backdrop-blur-sm mb-4 relative"
+          className="inline-flex items-center px-3 py-1 rounded-full glassy shader-clock bg-muted/50 backdrop-blur-sm mb-4 relative"
         >
           <div className="absolute top-0 left-1 right-1 h-px bg-gradient-to-r from-transparent via-border to-transparent rounded-full" />
           <span className="text-muted-foreground text-xs font-light relative z-10">💻 Full-Stack Developer</span>
         </div>
 
-        <h1 className="text-5xl md:text-6xl md:leading-16 tracking-tight font-light text-foreground mb-4">
+        <h1 className="glassy shader-clock text-5xl md:text-6xl md:leading-16 tracking-tight font-light text-foreground mb-4">
           <span className="font-medium italic instrument">Gabriel</span> Renostro
           <br />
           <span className="font-light tracking-tight text-foreground">Developer</span>
         </h1>
 
-        <p className="text-xs font-light text-muted-foreground mb-4 leading-relaxed">
+        <p className="glassy shader-clock text-xs font-light text-muted-foreground mb-4 leading-relaxed">
           Crafting exceptional digital experiences through clean code, innovative solutions, and modern web
           technologies. Specializing in React, Next.js, and full-stack development with a passion for beautiful,
           functional design.
@@ -220,7 +220,7 @@ export default function HeroContent() {
         <div className="flex items-center gap-4 flex-wrap">
           <button
             onClick={handleViewProjects}
-            className="px-8 py-3 rounded-full bg-transparent border border-border text-foreground font-normal text-xs transition-all duration-200 hover:bg-accent hover:border-accent-foreground cursor-pointer"
+            className="glassy shader-clock px-8 py-3 rounded-full bg-transparent border border-border text-foreground font-normal text-xs transition-all duration-200 hover:bg-accent hover:border-accent-foreground cursor-pointer"
           >
             View Projects
           </button>

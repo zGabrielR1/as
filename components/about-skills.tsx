@@ -50,9 +50,7 @@ export default function AboutSkills() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* About Content */}
           <div className="space-y-6">
-            <div
-              className="glassy rounded-2xl p-6"
-            >
+            <div className="glassy rounded-2xl p-6 shader-clock bg-card text-card-foreground">
               <h3 className="text-xl font-medium text-foreground mb-4">My Story</h3>
               <div className="space-y-4 text-sm font-light text-muted-foreground leading-relaxed">
                 <p>
@@ -70,13 +68,11 @@ export default function AboutSkills() {
             </div>
 
             {/* Experience Timeline */}
-            <div
-              className="glassy rounded-2xl p-6"
-            >
+            <div className="glassy rounded-2xl p-6 shader-clock bg-card text-card-foreground">
               <h3 className="text-xl font-medium text-foreground mb-6">Experience</h3>
               <div className="space-y-6">
                 {experience.map((exp, index) => (
-                  <div key={index} className="relative pl-6 border-l border-border">
+                  <div key={index} className="relative pl-6 border-l border-border glassy shader-clock mb-4">
                     <div className="absolute -left-1.5 top-0 w-3 h-3 bg-foreground rounded-full"></div>
                     <div className="space-y-1">
                       <h4 className="text-foreground font-medium text-sm">{exp.role}</h4>
@@ -93,9 +89,7 @@ export default function AboutSkills() {
 
           {/* Skills Section */}
           <div className="space-y-6">
-            <div
-              className="glassy rounded-2xl p-6"
-            >
+            <div className="glassy rounded-2xl p-6 shader-clock bg-card text-card-foreground">
               <h3 className="text-xl font-medium text-foreground mb-6">Technical Skills</h3>
               <div className="space-y-6">
                 {Object.entries(skills).map(([category, skillList]) => (
@@ -105,7 +99,7 @@ export default function AboutSkills() {
                       {skillList.map((skill, index) => (
                         <span
                           key={index}
-                          className="px-3 py-1.5 rounded-full bg-muted text-muted-foreground text-xs font-light border border-border hover:bg-accent hover:text-accent-foreground transition-colors duration-200"
+                          className="bg-muted/50 text-muted-foreground shader-clock hover:bg-primary/10 rounded-md px-2 py-1"
                         >
                           {skill}
                         </span>
@@ -117,24 +111,22 @@ export default function AboutSkills() {
             </div>
 
             {/* Stats */}
-            <div
-              className="glassy rounded-2xl p-6"
-            >
+            <div className="glassy rounded-2xl p-6 shader-clock bg-card text-card-foreground">
               <h3 className="text-xl font-medium text-foreground mb-6">By the Numbers</h3>
               <div className="grid grid-cols-2 gap-6">
-                <div className="text-center">
+                <div className="glassy text-center p-4 shader-clock">
                   <div className="text-2xl font-bold text-foreground mb-1">50+</div>
                   <div className="text-xs text-muted-foreground">Projects Completed</div>
                 </div>
-                <div className="text-center">
+                <div className="glassy text-center p-4 shader-clock">
                   <div className="text-2xl font-bold text-foreground mb-1">5+</div>
                   <div className="text-xs text-muted-foreground">Years Experience</div>
                 </div>
-                <div className="text-center">
+                <div className="glassy text-center p-4 shader-clock">
                   <div className="text-2xl font-bold text-foreground mb-1">15+</div>
                   <div className="text-xs text-muted-foreground">Technologies</div>
                 </div>
-                <div className="text-center">
+                <div className="glassy text-center p-4 shader-clock">
                   <div className="text-2xl font-bold text-foreground mb-1">100%</div>
                   <div className="text-xs text-muted-foreground">Client Satisfaction</div>
                 </div>
