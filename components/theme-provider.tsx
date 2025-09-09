@@ -14,26 +14,30 @@ function ThemeClassApplier({
   const { theme } = useTheme()
 
   const resolvedTheme = React.useMemo(() => {
-    if (theme === 'figma') {
-      return 'figma'
-    }
-    if (theme === 'shader-clock') {
-      return 'shader-clock'
-    }
-    return theme || 'dark'
+    if (theme === 'figma') return 'figma'
+    if (theme === 'shader-clock') return 'shader-clock'
+    return theme || 'shader-clock'
   }, [theme])
 
   React.useEffect(() => {
-    if (typeof document === 'undefined') {
-      return
-    }
+    if (typeof document === 'undefined') return
 
     const root = document.documentElement
+    const knownThemes = new Set(['dark', 'figma', 'shader-clock'])
+
+    // Preserve existing non-theme classes
+    const existing = new Set(root.className.trim().split(/\s+/).filter(Boolean))
+    for (const cls of Array.from(existing)) {
+      if (knownThemes.has(cls)) existing.delete(cls)
+    }
+
     const classes = [resolvedTheme]
     if (className) {
       classes.push(...className.trim().split(/\s+/))
     }
-    root.className = classes.join(' ')
+
+    for (const cls of classes) existing.add(cls)
+    root.className = Array.from(existing).join(' ')
   }, [resolvedTheme, className])
 
   return <>{children}</>
@@ -42,7 +46,7 @@ function ThemeClassApplier({
 export function ThemeProvider({ children, ...props }: any) {
   return (
     <NextThemesProvider
-      defaultTheme="dark"
+      defaultTheme="shader-clock"
       {...props}
     >
       <ThemeClassApplier className={props.className}>
