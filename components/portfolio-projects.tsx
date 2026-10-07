@@ -3,32 +3,33 @@
 import { Button } from "@/components/ui/button"
 
 export default function PortfolioProjects() {
+  const profileUrl = "https://github.com/gabrielrenostro"
   const projects = [
     {
       title: "E-Commerce Platform",
       description: "Full-stack e-commerce solution with React, Node.js, and Stripe integration",
       tech: ["React", "Node.js", "MongoDB", "Stripe"],
       status: "Live",
-      link: "#",
+      link: profileUrl,
     },
     {
       title: "Task Management App",
       description: "Collaborative project management tool with real-time updates and team features",
       tech: ["Next.js", "TypeScript", "Prisma", "WebSocket"],
       status: "In Development",
-      link: "#",
+      link: profileUrl,
     },
     {
       title: "AI Content Generator",
       description: "AI-powered content creation platform using OpenAI API and modern web technologies",
       tech: ["Next.js", "OpenAI API", "Tailwind", "Vercel"],
       status: "Live",
-      link: "#",
+      link: profileUrl,
     },
   ]
 
   return (
-    <section id="projects" className="relative z-10 px-8 py-16">
+    <section id="projects" className="relative z-10 scroll-mt-24 px-8 py-16">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="mb-12">
@@ -60,7 +61,7 @@ export default function PortfolioProjects() {
                 <span
                   className={`px-2 py-1 rounded-full text-xs font-light glassy shader-clock ${
                     project.status === "Live"
-                      ? "bg-black/40 text-white border border-destructive"
+                      ? "bg-primary/15 text-foreground border border-primary/40"
                       : "bg-muted/50 text-muted-foreground border border-muted"
                   }`}
                 >
@@ -75,6 +76,9 @@ export default function PortfolioProjects() {
                 >
                   <a
                     href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${project.title} on GitHub`}
                     className="text-muted-foreground hover:text-foreground"
                   >
                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,8 +117,10 @@ export default function PortfolioProjects() {
 
         {/* View All Projects Button */}
         <div className="flex justify-center mt-12">
-          <Button variant="glassy" size="lg" className="px-8 shader-clock">
-            View All Projects
+          <Button variant="glassy" size="lg" className="px-8 shader-clock" asChild>
+            <a href="https://github.com/gabrielrenostro" target="_blank" rel="noopener noreferrer">
+              View All Projects
+            </a>
           </Button>
         </div>
       </div>

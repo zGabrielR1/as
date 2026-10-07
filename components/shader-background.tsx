@@ -1,50 +1,61 @@
 "use client"
 
-import { useEffect, useRef, ReactNode } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
 
 interface ShaderBackgroundProps {
-  className?: string;
   children?: ReactNode;
 }
 
-export default function ShaderBackground({ className = "absolute inset-0 size-full", children }: ShaderBackgroundProps) {
+function compileShader(gl: WebGLRenderingContext, type: number, source: string): WebGLShader | null {
+  const shader = gl.createShader(type);
+  if (!shader) return null;
+  gl.shaderSource(shader, source);
+  gl.compileShader(shader);
+  if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+    console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+    gl.deleteShader(shader);
+    return null;
+  }
+  return shader;
+}
+
+export default function ShaderBackground({ children }: ShaderBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  
+
   useEffect(() => {
-    if (!canvasRef.current) return;
-    
     const canvas = canvasRef.current;
-    const gl = canvas.getContext("webgl");
-    
+    if (!canvas) return;
+
+    const gl = canvas.getContext("webgl", { antialias: false, alpha: false });
     if (!gl) {
-      console.error("WebGL not supported");
+      console.error("WebGL not supported — showing static fallback");
       return;
     }
-    
-    // Resize canvas to fill window
+
     const resizeCanvas = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      const parent = canvas.parentElement;
+      if (!parent) return;
+      const rect = parent.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      canvas.width = Math.max(1, Math.floor(rect.width * dpr));
+      canvas.height = Math.max(1, Math.floor(rect.height * dpr));
       gl.viewport(0, 0, canvas.width, canvas.height);
     };
-    
+
     window.addEventListener("resize", resizeCanvas);
-    resizeCanvas();
-    
-    // Create vertex shader
+
     const vertexShaderSource = `
       attribute vec4 aVertexPosition;
       void main() {
         gl_Position = aVertexPosition;
       }
     `;
-    
-    // Create fragment shader with the provided code
+
     const fragmentShaderSource = `
       precision highp float;
       uniform vec2 iResolution;
       uniform float iTime;
-      
+
       vec3 spectral_colour(float l) {
         float r=0.0,g=0.0,b=0.0;
         if ((l>=400.0)&&(l<410.0)) { float t=(l-400.0)/(410.0-400.0); r=+(0.33*t)-(0.20*t*t); }
@@ -59,7 +70,7 @@ export default function ShaderBackground({ className = "absolute inset-0 size-fu
         else if ((l>=475.0)&&(l<560.0)) { float t=(l-475.0)/(560.0-475.0); b=0.7-(t)+(0.30*t*t); }
         return vec3(r,g,b);
       }
-      
+
       void main() {
         vec2 p = (2.0*gl_FragCoord.xy - iResolution.xy) / min(iResolution.x, iResolution.y);
         p *= 2.0;
@@ -73,80 +84,73 @@ export default function ShaderBackground({ className = "absolute inset-0 size-fu
         gl_FragColor = vec4(spectral_colour(p.y * 50.0 + 500.0 + sin(iTime * 0.6)), 1.0);
       }
     `;
-    
-    // Create and compile vertex shader
-    const vertexShader = gl.createShader(gl.VERTEX_SHADER);
-    gl.shaderSource(vertexShader!, vertexShaderSource);
-    gl.compileShader(vertexShader!);
-    
-    // Create and compile fragment shader
-    const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
-    gl.shaderSource(fragmentShader!, fragmentShaderSource);
-    gl.compileShader(fragmentShader!);
-    
-    // Create shader program
+
+    const vertexShader = compileShader(gl, gl.VERTEX_SHADER, vertexShaderSource);
+    const fragmentShader = compileShader(gl, gl.FRAGMENT_SHADER, fragmentShaderSource);
+    if (!vertexShader || !fragmentShader) {
+      window.removeEventListener("resize", resizeCanvas);
+      return;
+    }
+
     const shaderProgram = gl.createProgram();
-    gl.attachShader(shaderProgram!, vertexShader!);
-    gl.attachShader(shaderProgram!, fragmentShader!);
-    gl.linkProgram(shaderProgram!);
-    gl.useProgram(shaderProgram!);
-    
-    // Create a buffer for the positions
+    if (!shaderProgram) {
+      window.removeEventListener("resize", resizeCanvas);
+      return;
+    }
+    gl.attachShader(shaderProgram, vertexShader);
+    gl.attachShader(shaderProgram, fragmentShader);
+    gl.linkProgram(shaderProgram);
+    if (!gl.getProgramParameter(shaderProgram, gl.LINK_STATUS)) {
+      console.error("Shader link error:", gl.getProgramInfoLog(shaderProgram));
+      gl.deleteProgram(shaderProgram);
+      window.removeEventListener("resize", resizeCanvas);
+      return;
+    }
+    gl.useProgram(shaderProgram);
+
     const positionBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
-    
-    // Full-screen quad vertices
-    const positions = [
-      -1.0, -1.0,
-       1.0, -1.0,
-      -1.0,  1.0,
-       1.0,  1.0,
-    ];
+    const positions = [-1.0, -1.0, 1.0, -1.0, -1.0, 1.0, 1.0, 1.0];
     gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-    
-    // Get attribute location
-    const positionAttributeLocation = gl.getAttribLocation(shaderProgram!, "aVertexPosition");
+
+    const positionAttributeLocation = gl.getAttribLocation(shaderProgram, "aVertexPosition");
     gl.enableVertexAttribArray(positionAttributeLocation);
     gl.vertexAttribPointer(positionAttributeLocation, 2, gl.FLOAT, false, 0, 0);
-    
-    // Get uniform locations
-    const timeUniformLocation = gl.getUniformLocation(shaderProgram!, "iTime");
-    const resolutionUniformLocation = gl.getUniformLocation(shaderProgram!, "iResolution");
-    
-    // Animation loop
-    let startTime = Date.now();
-    
+
+    const timeUniformLocation = gl.getUniformLocation(shaderProgram, "iTime");
+    const resolutionUniformLocation = gl.getUniformLocation(shaderProgram, "iResolution");
+
+    resizeCanvas();
+
+    let rafId = 0;
+    let disposed = false;
+    const startTime = Date.now();
+
     const render = () => {
-      // Set time uniform
+      if (disposed) return;
       const currentTime = (Date.now() - startTime) / 1000;
       gl.uniform1f(timeUniformLocation, currentTime);
-      
-      // Set resolution uniform
       gl.uniform2f(resolutionUniformLocation, canvas.width, canvas.height);
-      
-      // Draw the full-screen quad
       gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
-      
-      // Request next frame
-      requestAnimationFrame(render);
+      rafId = requestAnimationFrame(render);
     };
-    
     render();
-    
-    // Cleanup
+
     return () => {
+      disposed = true;
+      cancelAnimationFrame(rafId);
       window.removeEventListener("resize", resizeCanvas);
-      gl.deleteProgram(shaderProgram!);
-      gl.deleteShader(vertexShader!);
-      gl.deleteShader(fragmentShader!);
-      gl.deleteBuffer(positionBuffer!);
+      gl.deleteProgram(shaderProgram);
+      gl.deleteShader(vertexShader);
+      gl.deleteShader(fragmentShader);
+      gl.deleteBuffer(positionBuffer);
     };
   }, []);
 
   return (
-    <div className="relative size-full">
-      <canvas ref={canvasRef} className={className} />
-      {children}
+    <div className="relative min-h-screen w-full overflow-hidden bg-black">
+      <canvas ref={canvasRef} className="absolute inset-0 h-full w-full" aria-hidden="true" />
+      <div className="relative z-10">{children}</div>
     </div>
   );
 }

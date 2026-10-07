@@ -3,7 +3,7 @@
 import Header from "@/components/header"
 import HeroContent from "@/components/hero-content"
 import PulsingCircle from "@/components/pulsing-circle"
-import ShaderBackground from '@/components/shader-background'
+import ShaderBackground from "@/components/shader-background"
 import PortfolioProjects from "@/components/portfolio-projects"
 import AboutSkills from "@/components/about-skills"
 import ContactSection from "@/components/contact-section"
@@ -16,21 +16,21 @@ export default function GabrielPortfolio() {
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
-  const showShader = mounted && theme !== 'figma'
+  const showShader = mounted && theme !== "figma"
 
   return (
     <>
       <Header />
       {showShader ? (
-        <ShaderBackground className="shader-clock">
+        <ShaderBackground>
           <HeroContent />
           <PulsingCircle />
         </ShaderBackground>
       ) : (
-        <>
+        <div className="relative min-h-screen w-full overflow-hidden">
           <HeroContent />
           <PulsingCircle />
-        </>
+        </div>
       )}
       <PortfolioProjects />
       <AboutSkills />

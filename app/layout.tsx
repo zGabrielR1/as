@@ -50,7 +50,13 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body className={`${figtree.variable} ${inter.variable} ${GeistMono.variable} ${instrumentSerif.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="shader-clock" enableSystem={false} disableTransitionOnChange>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="shader-clock"
+          themes={["shader-clock", "dark", "figma"]}
+          enableSystem={false}
+          disableTransitionOnChange
+        >
           {children}
         </ThemeProvider>
       </body>

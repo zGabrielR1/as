@@ -5,25 +5,24 @@ import { motion } from "framer-motion"
 
 export default function PulsingCircle() {
   return (
-    <div className="absolute bottom-8 right-8 z-30">
-      <div className="relative w-20 h-20 flex items-center justify-center">
+    <div className="absolute right-8 bottom-8 z-30">
+      <div className="relative flex h-20 w-20 items-center justify-center">
         {/* Pulsing Border Circle */}
         <PulsingBorder
-          colors={["#BEECFF", "#E77EDC", "#FF4C3E", "#00FF88", "#FFD700", "#FF6B35", "#8A2BE2"]}
+          colors={["#BEECFF", "#E77EDC", "#FF4C3E", "#00FF88", "#FFD700"]}
           colorBack="#00000000"
           speed={1.5}
           roundness={1}
           thickness={0.1}
           softness={0.2}
           intensity={5}
-          spotsPerColor={5}
+          spots={3}
           spotSize={0.1}
           pulse={0.1}
           smoke={0.5}
           smokeSize={4}
           scale={0.65}
           rotation={0}
-          frame={9161408.251009725}
           style={{
             width: "60px",
             height: "60px",
@@ -33,7 +32,7 @@ export default function PulsingCircle() {
 
         {/* Rotating Text Around the Pulsing Border */}
         <motion.svg
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 h-full w-full text-muted-foreground"
           viewBox="0 0 100 100"
           animate={{ rotate: 360 }}
           transition={{
@@ -42,13 +41,14 @@ export default function PulsingCircle() {
             ease: "linear",
           }}
           style={{ transform: "scale(1.6)" }}
+          aria-hidden="true"
         >
           <defs>
             <path id="circle" d="M 50, 50 m -38, 0 a 38,38 0 1,1 76,0 a 38,38 0 1,1 -76,0" />
           </defs>
-          <text className="text-sm fill-white/80 instrument">
+          <text className="instrument fill-current text-sm">
             <textPath href="#circle" startOffset="0%">
-              v0 is amazing • v0 is amazing • v0 is amazing • v0 is amazing •
+              Gabriel Renostro • Full-Stack Developer • Gabriel Renostro •
             </textPath>
           </text>
         </motion.svg>

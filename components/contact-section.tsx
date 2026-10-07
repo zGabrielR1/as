@@ -11,11 +11,15 @@ export default function ContactSection() {
     email: "",
     message: "",
   })
+  const [sent, setSent] = useState(false)
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission here
-    console.log("Form submitted:", formData)
+    const subject = encodeURIComponent(`Portfolio contact from ${formData.name}`)
+    const body = encodeURIComponent(`${formData.message}\n\n— ${formData.name} (${formData.email})`)
+    window.location.href = `mailto:gabriel@renostro.dev?subject=${subject}&body=${body}`
+    setSent(true)
+    setFormData({ name: "", email: "", message: "" })
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -56,7 +60,7 @@ export default function ContactSection() {
   ]
 
   return (
-    <section id="contact" className="relative z-10 px-8 py-16 mb-16 mt-16">
+    <section id="contact" className="relative z-10 mb-16 mt-16 scroll-mt-24 px-8 py-16">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <div className="mb-12 text-center">
@@ -85,6 +89,11 @@ export default function ContactSection() {
             <h3 className="text-xl font-medium text-foreground mb-6">Send a Message</h3>
 
             <form onSubmit={handleSubmit} className="space-y-6">
+              {sent && (
+                <p role="status" className="rounded-lg border border-primary/40 bg-primary/10 px-4 py-3 text-sm text-foreground">
+                  Thanks — your email app should have opened with the message ready to send.
+                </p>
+              )}
               <div>
                 <label htmlFor="name" className="block text-sm font-light text-muted-foreground mb-2">
                   Name
