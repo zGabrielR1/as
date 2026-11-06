@@ -61,12 +61,16 @@
   --glass-shadow: rgba(0, 0, 0, 0.2);
 }
 
-/* Figma light theme. Optimized WebP background (was a 6.7MB PNG). */
+/* Figma light theme. Code-generated pastel mesh (ex-6.7MB PNG / WebP). */
 .figma {
   --font-size: 14px;
-  --background: #ffffff;
-  --background-color: #ffffff;
-  --bg-image: url("/assets/figma-bg-1920.webp");
+  --background: #fdf2f5;
+  --background-color: #fdf2f5;
+  --bg-image: radial-gradient(ellipse 120% 90% at 20% 10%, rgba(245, 198, 214, 0.9), transparent 55%),
+    radial-gradient(ellipse 100% 80% at 80% 20%, rgba(168, 196, 224, 0.85), transparent 50%),
+    radial-gradient(ellipse 100% 90% at 60% 85%, rgba(216, 181, 242, 0.7), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 10% 90%, rgba(253, 232, 214, 0.8), transparent 50%),
+    linear-gradient(160deg, #fdf2f5 0%, #e8eef7 55%, #f3e8f7 100%);
   --foreground: oklch(0.145 0 0);
   --card: #ffffff;
   --card-foreground: oklch(0.145 0 0);
@@ -82,18 +86,21 @@
   --accent-foreground: #030213;
   --destructive: #d4183d;
   --destructive-foreground: #ffffff;
-  --border: rgba(0, 0, 0, 0.1);
+  --border: rgba(0, 0, 0, 0.15);
   --input: transparent;
   --ring: oklch(0.708 0 0);
   --glass-bg: rgba(255, 255, 255, 0.55);
-  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-border: rgba(0, 0, 0, 0.15);
   --glass-shadow: rgba(0, 0, 0, 0.12);
 }
 
 .figma.dark {
   --background: oklch(0.145 0 0);
   --background-color: oklch(0.145 0 0);
-  --bg-image: url("/assets/figma-bg-1920.webp");
+  --bg-image: radial-gradient(ellipse 120% 90% at 20% 10%, rgba(245, 198, 214, 0.35), transparent 55%),
+    radial-gradient(ellipse 100% 80% at 80% 20%, rgba(168, 196, 224, 0.3), transparent 50%),
+    radial-gradient(ellipse 100% 90% at 60% 85%, rgba(216, 181, 242, 0.25), transparent 55%),
+    linear-gradient(160deg, #17141f 0%, #141a2e 55%, #1a1420 100%);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.145 0 0);
   --card-foreground: oklch(0.985 0 0);
@@ -196,6 +203,30 @@ a.glassy:hover {
 /* Readability over the animated shader: soft text shadow instead of boxes. */
 .hero-readable {
   text-shadow: 0 1px 12px rgba(0, 0, 0, 0.55);
+}
+
+.figma .hero-readable {
+  text-shadow: 0 1px 12px rgba(255, 255, 255, 0.7);
+}
+
+/* Static pastel mesh used when WebGL is unavailable or in the figma theme. */
+.pastel-fallback {
+  --pastel-bg: radial-gradient(ellipse 120% 90% at 20% 10%, rgba(245, 198, 214, 0.9), transparent 55%),
+    radial-gradient(ellipse 100% 80% at 80% 20%, rgba(168, 196, 224, 0.85), transparent 50%),
+    radial-gradient(ellipse 100% 90% at 60% 85%, rgba(216, 181, 242, 0.7), transparent 55%),
+    linear-gradient(160deg, #17141f 0%, #141a2e 55%, #1a1420 100%);
+  background-color: #17141f;
+  background-image: var(--pastel-bg);
+}
+
+.figma .pastel-fallback {
+  --pastel-bg: radial-gradient(ellipse 120% 90% at 20% 10%, rgba(245, 198, 214, 0.9), transparent 55%),
+    radial-gradient(ellipse 100% 80% at 80% 20%, rgba(168, 196, 224, 0.85), transparent 50%),
+    radial-gradient(ellipse 100% 90% at 60% 85%, rgba(216, 181, 242, 0.7), transparent 55%),
+    radial-gradient(ellipse 90% 70% at 10% 90%, rgba(253, 232, 214, 0.8), transparent 50%),
+    linear-gradient(160deg, #fdf2f5 0%, #e8eef7 55%, #f3e8f7 100%);
+  background-color: #fdf2f5;
+  background-image: var(--pastel-bg);
 }
 
 /* Figma theme background */

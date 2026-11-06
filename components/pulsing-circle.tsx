@@ -5,8 +5,8 @@ import { motion } from "framer-motion"
 
 export default function PulsingCircle() {
   return (
-    <div className="absolute right-8 bottom-8 z-30">
-      <div className="relative flex h-20 w-20 items-center justify-center">
+    <div className="absolute right-4 bottom-4 z-30 sm:right-8 sm:bottom-8">
+      <div className="relative flex h-20 w-20 items-center justify-center max-h-[calc(100vh-200px)]">
         {/* Pulsing Border Circle */}
         <PulsingBorder
           colors={["#BEECFF", "#E77EDC", "#FF4C3E", "#00FF88", "#FFD700"]}

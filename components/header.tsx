@@ -16,15 +16,15 @@ export default function Header() {
   }
 
   return (
-    <header className="fixed top-0 right-0 left-0 z-20 flex items-center justify-between bg-background/60 p-6 backdrop-blur-md">
+    <header className="fixed top-0 right-0 left-0 z-20 flex items-center justify-between gap-2 bg-background/60 px-4 py-3 backdrop-blur-md sm:px-6 sm:py-4">
       {/* Logo */}
-      <div className="flex items-center">
+      <div className="flex min-w-0 items-center">
         <div className="text-xl font-bold tracking-tight text-foreground">
           <span className="instrument font-medium">GR</span>
         </div>
       </div>
 
-      <nav className="flex items-center space-x-2" aria-label="Primary">
+      <nav className="hidden items-center space-x-1 sm:flex" aria-label="Primary">
         <a
           href="#about"
           onClick={(e) => handleNavClick(e, "about")}
@@ -49,7 +49,7 @@ export default function Header() {
       </nav>
 
       {/* Resume Button */}
-      <div className="flex items-center gap-3">
+      <div className="flex shrink-0 items-center gap-2 sm:gap-3">
         <ThemeToggle />
         <div className="group relative flex items-center">
           <span
@@ -69,7 +69,7 @@ export default function Header() {
             href="https://linkedin.com/in/gabrielrenostro"
             target="_blank"
             rel="noopener noreferrer"
-            className="z-10 flex h-8 cursor-pointer items-center rounded-full bg-primary px-6 py-2 text-xs font-normal text-primary-foreground transition-all duration-300 hover:opacity-90"
+            className="z-10 flex h-8 cursor-pointer items-center rounded-full bg-primary px-4 py-2 text-xs font-normal text-primary-foreground transition-all duration-300 hover:opacity-90 sm:px-6"
           >
             Resume
           </a>

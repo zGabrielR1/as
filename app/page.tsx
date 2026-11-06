@@ -27,7 +27,7 @@ export default function GabrielPortfolio() {
           <PulsingCircle />
         </ShaderBackground>
       ) : (
-        <div className="relative min-h-screen w-full overflow-hidden">
+        <div className="pastel-fallback relative min-h-screen w-full overflow-hidden">
           <HeroContent />
           <PulsingCircle />
         </div>

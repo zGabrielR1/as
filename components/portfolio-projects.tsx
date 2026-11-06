@@ -3,7 +3,7 @@
 import { Button } from "@/components/ui/button"
 
 export default function PortfolioProjects() {
-  const profileUrl = "https://github.com/gabrielrenostro"
+  const profileUrl = "https://github.com/zGabrielR1"
   const projects = [
     {
       title: "E-Commerce Platform",
@@ -118,7 +118,7 @@ export default function PortfolioProjects() {
         {/* View All Projects Button */}
         <div className="flex justify-center mt-12">
           <Button variant="glassy" size="lg" className="px-8 shader-clock" asChild>
-            <a href="https://github.com/gabrielrenostro" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/zGabrielR1" target="_blank" rel="noopener noreferrer">
               View All Projects
             </a>
           </Button>

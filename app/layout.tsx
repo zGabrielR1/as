@@ -1,5 +1,5 @@
 import type React from "react"
-import type { Metadata } from "next"
+import type { Metadata, Viewport } from "next"
 import { Figtree, Inter } from "next/font/google"
 import { GeistMono } from "geist/font/mono"
 import { Instrument_Serif } from "next/font/google"
@@ -33,6 +33,7 @@ export const metadata: Metadata = {
   description:
     "Portfolio of Gabriel Renostro, a passionate full-stack developer specializing in React, Next.js, and modern web technologies. Creating exceptional digital experiences through clean code and innovative solutions.",
   generator: "v0.app",
+  metadataBase: new URL("https://vercel.com/gabriel-renostro-6094s-projects/v0-shaders-hero-section"),
   keywords: ["Gabriel Renostro", "Full-Stack Developer", "React", "Next.js", "Web Development", "Portfolio"],
   authors: [{ name: "Gabriel Renostro" }],
   openGraph: {
@@ -40,6 +41,15 @@ export const metadata: Metadata = {
     description: "Portfolio showcasing modern web development projects and expertise",
     type: "website",
   },
+  twitter: {
+    card: "summary",
+    title: "Gabriel Renostro - Full-Stack Developer",
+    description: "Portfolio showcasing modern web development projects and expertise",
+  },
+}
+
+export const viewport: Viewport = {
+  themeColor: "#17141f",
 }
 
 export default function RootLayout({

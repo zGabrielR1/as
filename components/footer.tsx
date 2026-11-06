@@ -40,7 +40,7 @@ export default function Footer() {
           <div className="flex items-center space-x-3">
             <Button variant="ghost" className="glassy h-8 w-8 rounded-full" size="icon" asChild>
               <a
-                href="https://github.com/gabrielrenostro"
+                href="https://github.com/zGabrielR1"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub"

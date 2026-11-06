@@ -92,7 +92,7 @@ function ButtonGlobal({ onClick }: { onClick: () => void }) {
         )}
       </AnimatePresence>
 
-      <span className="relative z-10 font-[Inter,sans-serif] text-[20px] font-normal tracking-[-0.7px] text-primary-foreground drop-shadow-lg">
+      <span className="relative z-10 font-[Inter,sans-serif] text-[20px] font-normal tracking-[-0.7px] text-foreground drop-shadow-lg">
         Contact Me
       </span>
     </button>
@@ -121,14 +121,14 @@ export default function HeroContent() {
   }
 
   return (
-    <main className="hero-readable relative z-10 flex min-h-screen items-end px-8 pt-32 pb-16">
+    <main className="hero-readable relative z-10 flex min-h-screen items-end px-5 pt-28 pb-16 sm:px-8 sm:pt-32">
       <div className="max-w-lg text-left">
         <div className="glassy relative mb-4 inline-flex items-center rounded-full px-3 py-1 backdrop-blur-sm">
           <div className="absolute top-0 right-1 left-1 h-px rounded-full bg-gradient-to-r from-transparent via-border to-transparent" />
           <span className="relative z-10 text-xs font-light text-muted-foreground">💻 Full-Stack Developer</span>
         </div>
 
-        <h1 className="mb-4 text-5xl font-light tracking-tight text-foreground md:text-6xl md:leading-tight">
+        <h1 className="mb-4 text-4xl font-light tracking-tight text-foreground sm:text-5xl md:text-6xl md:leading-tight">
           <span className="instrument font-medium italic">Gabriel</span> Renostro
           <br />
           <span className="font-light tracking-tight text-foreground">Developer</span>
